@@ -4,6 +4,7 @@ import com.example.hritik.learn.dto.EmployeeDTO;
 import com.example.hritik.learn.entities.EmployeeEntity;
 import com.example.hritik.learn.repositories.EmployeeRepository;
 import com.example.hritik.learn.services.EmployeeService;
+import exceptions.ResourceNotFoundException;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -66,7 +67,8 @@ public class EmployeeController {
         return employeeDTO
                 .map(employeeDTO1 -> ResponseEntity.ok(employeeDTO1)) // ok means 200 status code
                 //.orElse(ResponseEntity.notFound().build()); // 404 Not Found
-                .orElseThrow(() -> new NoSuchElementException("Employee not found"));
+                //.orElseThrow(() -> new NoSuchElementException("Employee not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Employee not found with id " + employeeId));
     }
 
 //    // GET API to get all employees (without response entity)

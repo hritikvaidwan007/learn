@@ -9,6 +9,8 @@ public class EmployeeRoleValidator implements ConstraintValidator<EmployeeRoleVa
 
     @Override
     public boolean isValid(String inputRole, ConstraintValidatorContext context) {
+        if (inputRole == null) return false; // Added because we used @Valid Annotation (check)
+
         List<String> roles = List.of("USER", "ADMIN");
         return roles.contains(inputRole); // returns true or false. true when role is in ADMIN or USER
     }

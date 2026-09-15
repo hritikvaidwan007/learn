@@ -3,6 +3,7 @@ package com.example.hritik.learn.services;
 import com.example.hritik.learn.dto.EmployeeDTO;
 import com.example.hritik.learn.entities.EmployeeEntity;
 import com.example.hritik.learn.repositories.EmployeeRepository;
+import exceptions.ResourceNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.util.ReflectionUtils;
 import org.springframework.stereotype.Service;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -66,9 +68,7 @@ public class EmployeeService {
     // DELETE /employees/{employeeId}
     public boolean deleteEmployeeById(Long employeeId) {
         boolean exists = employeeRepository.existsById(employeeId);
-        if (!exists) {
-            return false;
-        }
+        if (!exists) {throw new ResourceNotFoundException("Could not delete because Employee not found with id: " + employeeId);}
         else {
             employeeRepository.deleteById(employeeId);
             return true;
@@ -77,6 +77,10 @@ public class EmployeeService {
 
     // PUT /employees/{employeeId}
     public EmployeeDTO updateEmployeeId(Long employeeId, EmployeeDTO inputEmployeeDTO) {
+
+        // new 2 lines below related to exception handling, it can work without these 2 lines
+        boolean exists = employeeRepository.existsById(employeeId);
+        if (!exists) {throw new ResourceNotFoundException("Could not update because Employee not found with id: " + employeeId);}
 
         // Below logic is such that if already employee Id is not present, then it regiosters a new employee just like POST API
         // Basically we have created this as Upsert API instead of just update API
@@ -92,10 +96,7 @@ public class EmployeeService {
     public EmployeeDTO updatePartiallyEmployeeById(Long employeeId, Map<String, Object> inputEmployeeUpdates) {
         boolean exists = employeeRepository.existsById(employeeId);
 
-        if (!exists)
-        {
-            return null; // Return null for Map<String, Object>
-        }
+        if (!exists) {throw new ResourceNotFoundException("Employee not found with id: " + employeeId);}
         else {
             // First fetch that employee  needs to be pathed (whose multiple fields needs to be updated)
             EmployeeEntity employeeEntity = employeeRepository.findById(employeeId).orElse(null);
