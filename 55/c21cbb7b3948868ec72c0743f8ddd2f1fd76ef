@@ -1,0 +1,26 @@
+src/main/java/com/example/hritik/learn/advices/ApiErrorEntity.java
+  h_65ad76aec1242f 6-7,13
+src/main/java/exceptions/ResourceNotFoundException.java
+  h_65ad76aec1242f 1-13
+src/main/java/com/example/hritik/learn/controllers/EmployeeController.java
+  h_65ad76aec1242f 7,70-71
+src/main/java/com/example/hritik/learn/advices/GlobalExceptionHandler.java
+  h_65ad76aec1242f 3,6,10,12,14,35-49,58-94
+  h_65ad76aec1242f 13
+src/main/java/com/example/hritik/learn/services/EmployeeService.java
+  h_65ad76aec1242f 6,14,71,81-83,99
+  h_65ad76aec1242f 84
+src/main/java/com/example/hritik/learn/annotations/EmployeeRoleValidator.java
+  h_65ad76aec1242f 12-13
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "55c21cbb7b3948868ec72c0743f8ddd2f1fd76ef",
+  "prompts": {},
+  "humans": {
+    "h_65ad76aec1242f": {
+      "author": "hritik.vaidwan <hritik.vaidwan@telekom-digital.com>"
+    }
+  }
+}
