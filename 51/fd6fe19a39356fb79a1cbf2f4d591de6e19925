@@ -1,0 +1,31 @@
+src/main/java/com/example/hritik/learn/advices/ApiErrorEntity.java
+  h_65ad76aec1242f 11
+src/main/java/com/example/hritik/learn/advices/GlobalExceptionHandler.java
+  h_65ad76aec1242f 19,48-60,62,68,71-92,94,96,114,119,122-131,133,135-136,142-143,145-154,156-157
+  s_2a50fd3956deae::t_e7d98ca6fe50ec 118,134,155
+src/main/java/com/example/hritik/learn/advices/GlobalResponseHandler.java
+  h_65ad76aec1242f 1-39
+src/main/java/com/example/hritik/learn/advices/ApiResponseEntity.java
+  h_65ad76aec1242f 1-53
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "51fd6fe19a39356fb79a1cbf2f4d591de6e19925",
+  "prompts": {},
+  "humans": {
+    "h_65ad76aec1242f": {
+      "author": "hritik.vaidwan <hritik.vaidwan@telekom-digital.com>"
+    }
+  },
+  "sessions": {
+    "s_2a50fd3956deae": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "dac57a10-ab4b-4d70-b2c4-bc2e59e81503",
+        "model": "unknown"
+      },
+      "human_author": "hritik.vaidwan <hritik.vaidwan@telekom-digital.com>"
+    }
+  }
+}
