@@ -8,7 +8,7 @@ import java.util.List;
 @Data // to generate getters and setters
 @Builder
 public class ApiErrorEntity { // This entity class is what is returned when an API fails
-    private String status;
+    private String status; // @Data is defined, means getStatus() getter will automatically be created
     private String message;
     private List<String> subErrors;
 }
