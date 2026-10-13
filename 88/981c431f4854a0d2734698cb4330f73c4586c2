@@ -1,0 +1,27 @@
+src/main/java/com/example/hritik/learn/advices/ApiResponseEntity.java
+  h_65ad76aec1242f 3,29
+src/main/java/com/example/hritik/learn/advices/GlobalExceptionHandler.java
+  h_65ad76aec1242f 152-153
+  s_2a50fd3956deae::t_fc1f3a7faa4a4f 155-172
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "88981c431f4854a0d2734698cb4330f73c4586c2",
+  "prompts": {},
+  "humans": {
+    "h_65ad76aec1242f": {
+      "author": "hritik.vaidwan <hritik.vaidwan@telekom-digital.com>"
+    }
+  },
+  "sessions": {
+    "s_2a50fd3956deae": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "dac57a10-ab4b-4d70-b2c4-bc2e59e81503",
+        "model": "composer-2.5"
+      },
+      "human_author": "hritik.vaidwan <hritik.vaidwan@telekom-digital.com>"
+    }
+  }
+}
