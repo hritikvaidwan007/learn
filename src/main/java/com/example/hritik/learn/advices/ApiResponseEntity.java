@@ -1,5 +1,6 @@
 package com.example.hritik.learn.advices;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.Getter;
 
@@ -25,6 +26,7 @@ Sample response be like (after wrapping into new schema):
 @Data // generate getter and setter because fields are private
 public class ApiResponseEntity<T> {
     // A) fields
+    @JsonFormat(pattern = "HH:mm:ss dd-MM-yyyy")
     private LocalDateTime timestamp;
 
     // one of the fields below is always non-null and another always null

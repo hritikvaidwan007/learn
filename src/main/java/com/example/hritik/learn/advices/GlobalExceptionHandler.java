@@ -149,9 +149,27 @@ public class GlobalExceptionHandler {
 
     // ***************** Internal methods to facilitate 'DRY' *********************************************************
     // remember 'ResponseEntity' helps to return status code
+    // we are wrapping apiErrorEntity schema inside ApiResponseEntity schema
+    // this is AI generated, this needs to be discussed and fixed
     private ResponseEntity<ApiResponseEntity<?>> buildErrorResponseEntity(ApiErrorEntity apiErrorEntity) {
-        //return new ResponseEntity<>(new ApiResponseEntity<>(apiErrorEntity), apiErrorEntity.getStatus());
-        return new ResponseEntity<>(new ApiResponseEntity<>(apiErrorEntity), HttpStatus.valueOf(apiErrorEntity.getStatus()));
+        // Step 1: Read status string from ApiErrorEntity (set via String.valueOf(HttpStatus.BAD_REQUEST) etc.)
+        // That gives values like "400 BAD_REQUEST", but HttpStatus.valueOf() only accepts the enum name "BAD_REQUEST"
+        String status = apiErrorEntity.getStatus();
+        int spaceIndex = status.indexOf(' ');
+
+        HttpStatus httpStatus;
+        if (spaceIndex >= 0) {
+            String statusName = status.substring(spaceIndex + 1); // e.g. BAD_REQUEST
+            httpStatus = HttpStatus.valueOf(statusName);
+        } else {
+            httpStatus = HttpStatus.valueOf(status);
+        }
+
+        // Step 2: Put ApiErrorEntity inside ApiResponseEntity (error field set, data stays null)
+        ApiResponseEntity<?> apiResponseEntity = new ApiResponseEntity<>(apiErrorEntity);
+
+        // Step 3: Return wrapped body with the correct HTTP status code (400, 404, 500, ...)
+        return new ResponseEntity<>(apiResponseEntity, httpStatus);
     }
 
 
